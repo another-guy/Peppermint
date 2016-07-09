@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Peppermint</id>
+    <version>1.0.0-alpha2</version>
+    <title>Peppermint</title>
+    <authors>Igor Soloydenko</authors>
+    <owners>Igor Soloydenko</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A bit of syntax sugar.</description>
+    <releaseNotes>Initial package.</releaseNotes>
+    <copyright>Copyright © Igor Soloydenko 2016</copyright>
+    <tags>SyntaxSugar Syntax Sugar</tags>
+  </metadata>
+</package>
