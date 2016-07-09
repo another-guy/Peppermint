@@ -30,9 +30,9 @@ Syntax sugar is syntax sugar: it's not a necessary thing per se but it can impro
 
 ## Installation
 
-To install Peppermint, run the following command in the Package Manager Console
-
-Install-Package Peppermint -Pre
+Peppermint is a available in a form of a NuGet package.
+Follow regular installation process to bring it to your project.
+https://www.nuget.org/packages/Peppermint/
 
 ## API Reference
 
