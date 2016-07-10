@@ -24,6 +24,13 @@ dict = dict.NullToEmpty();
 var size = dict.Count; // size == 0, no exception here.
 ```
 
+ArrayExtensions:
+```cs
+string[] array = null;
+array = array.NullToEmpty();
+var length = array.Length; // length == 0, no exception here.
+```
+
 ## Motivation
 
 Syntax sugar is syntax sugar: it's not a necessary thing per se but it can improve code quality.
