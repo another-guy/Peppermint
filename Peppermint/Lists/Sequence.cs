@@ -21,7 +21,7 @@ namespace Peppermint.Lists
             var @base = baseOverride ?? 0;
             var step = stepOverride ?? 1;
 
-            var current = @base;
+            var current = 0;
             while (true)
             {
                 var item = sequenceItemGenerator(@base, current);
