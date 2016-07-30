@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Peppermint.Lists;
 using Xunit;
 
@@ -7,12 +8,25 @@ namespace Peppermint.Tests.Lists
     public class SequenceTests
     {
         [Fact]
-        public void TestNaturalSequenceAllPositive()
+        public void ThrowsException()
+        {
+            // Arrange
+            var sequence = Sequence.WithoutDuplicates<int>(null);
+
+            // Act
+            var caught = Assert.Throws<ArgumentNullException>(() => sequence.Take(1).ToList());
+
+            // Assert
+            Assert.True(caught.Message.Contains("sequenceItemGenerator"));
+        }
+
+        [Fact]
+        public void NaturalSequenceAllPositive()
         {
             // Arrange
             // Act
             var fiveNatural = Sequence
-                .ListWithoutDuplicates(Sequence.Natural)
+                .WithoutDuplicates(Sequence.NaturalNumbers)
                 .Take(5)
                 .ToList();
 
@@ -21,12 +35,12 @@ namespace Peppermint.Tests.Lists
         }
 
         [Fact]
-        public void TestNaturalSequenceShifted()
+        public void CeilSequenceShifted()
         {
             // Arrange
             // Act
             var fiveNatural = Sequence
-                .ListWithoutDuplicates(Sequence.Ceil, 2)
+                .WithoutDuplicates(Sequence.CeilNumbers, baseOverride: 2)
                 .Take(5)
                 .ToList();
 
@@ -35,17 +49,31 @@ namespace Peppermint.Tests.Lists
         }
 
         [Fact]
-        public void TestNaturalSequenceWithNegativeStep()
+        public void CeilSequenceWithNegativeStep()
         {
             // Arrange
             // Act
             var fiveNatural = Sequence
-                .ListWithoutDuplicates(Sequence.Ceil, stepOverride: -1)
+                .WithoutDuplicates(Sequence.CeilNumbers, stepOverride: -1)
                 .Take(5)
                 .ToList();
 
             // Assert
             Assert.True(new[] { 0, -1, -2, -3, -4 }.SequenceEqual(fiveNatural));
+        }
+
+        [Fact]
+        public void CeilSequenceShiftedAndWithNegativeStep()
+        {
+            // Arrange
+            // Act
+            var fiveNatural = Sequence
+                .WithoutDuplicates(Sequence.CeilNumbers, baseOverride: 2, stepOverride: -1)
+                .Take(5)
+                .ToList();
+
+            // Assert
+            Assert.True(new[] { 2, 1, 0, -1, -2 }.SequenceEqual(fiveNatural));
         }
     }
 }
