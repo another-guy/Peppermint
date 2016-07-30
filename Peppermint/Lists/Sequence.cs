@@ -11,8 +11,6 @@ namespace Peppermint.Lists
 
         public static Func<int, int, int> Ceil = (@base, current) => @base + current;
 
-        public static Func<int, int, int> ZeroPositiveNegative = (@base, current) => @base + current * (current % 2 == 1 ? 1 : -1);
-
         public static IEnumerable<T> ListWithoutDuplicates<T>(
             Func<int, int, T> sequenceItemGenerator,
             int? baseOverride = null,
