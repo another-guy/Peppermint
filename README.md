@@ -47,7 +47,7 @@ https://www.nuget.org/packages/Peppermint/
 
 ## Tests
 
-There are no automated tests for the project at the moment.
+Unit tests are available in Peppermint.Tests project.
 
 ## License
 
