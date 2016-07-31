@@ -31,6 +31,23 @@ array = array.NullToEmpty();
 var length = array.Length; // length == 0, no exception here.
 ```
 
+ListExtensions:
+```cs
+string[] ints = new[] { "Alice", "Bob" };
+list.SwapAt(0, 1); // Swaps items in place. The array is now []{ "Bob", "Alice" }
+```
+
+Sequence:
+```cs
+// Other sequence types or even custom sequence generators can be used.
+var integers = Sequence
+	.WithoutDuplicates(Sequence.NaturalNumbers)
+	.Take(5)
+	.ToList(); // Results in a List<int>() { 1, 2, 3, 4, 5 }
+
+// Sequence start number and sequence step can be explicitly provided if necessary.
+```
+
 ## Motivation
 
 Syntax sugar is syntax sugar: it's not a necessary thing per se but it can improve code quality.
