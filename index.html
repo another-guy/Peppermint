@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Peppermint by another-guy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Peppermint</h1>
+      <h2 class="project-tagline">Provides a bit of C# syntactic sugar</h2>
+      <a href="https://github.com/another-guy/Peppermint" class="btn">View on GitHub</a>
+      <a href="https://github.com/another-guy/Peppermint/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/another-guy/Peppermint/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="synopsis" class="anchor" href="#synopsis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Synopsis</h2>
+
+<p>Provides a bit of C# syntactic sugar</p>
+
+<h2>
+<a id="code-example" class="anchor" href="#code-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Example</h2>
+
+<p>StringToEnumExtension:</p>
+
+<div class="highlight highlight-source-cs"><pre><span class="pl-k">enum</span> <span class="pl-en">MyEnum</span>
+{
+  One = <span class="pl-c1">1</span>,
+  Two = <span class="pl-c1">2</span>
+}
+
+<span class="pl-k">string</span> @<span class="pl-k">string</span> = <span class="pl-s"><span class="pl-pds">"</span>One<span class="pl-pds">"</span></span>;
+MyEnum <span class="pl-k">value</span> = @<span class="pl-k">string</span>.Parse&lt;MyEnum&gt;();</pre></div>
+
+<p>DictionaryExtensions:</p>
+
+<div class="highlight highlight-source-cs"><pre>IDictionary&lt;<span class="pl-k">string</span>, <span class="pl-k">object</span>&gt; dict = <span class="pl-c1">null</span>;
+dict = dict.NullToEmpty();
+<span class="pl-k">var</span> size = dict.Count; <span class="pl-c">// size == 0, no exception here.</span></pre></div>
+
+<p>ArrayExtensions:</p>
+
+<div class="highlight highlight-source-cs"><pre><span class="pl-k">string</span>[] array = <span class="pl-c1">null</span>;
+array = array.NullToEmpty();
+<span class="pl-k">var</span> length = array.Length; <span class="pl-c">// length == 0, no exception here.</span></pre></div>
+
+<p>ListExtensions:</p>
+
+<div class="highlight highlight-source-cs"><pre><span class="pl-k">string</span>[] ints = <span class="pl-k">new</span>[] { <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span> };
+list.SwapAt(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>); <span class="pl-c">// Swaps items in place. The array is now []{ "Bob", "Alice" }</span></pre></div>
+
+<p>Sequence:</p>
+
+<div class="highlight highlight-source-cs"><pre><span class="pl-c">// Other sequence types or even custom sequence generators can be used.</span>
+<span class="pl-k">var</span> integers = Sequence
+    .WithoutDuplicates(Sequence.NaturalNumbers)
+    .Take(<span class="pl-c1">5</span>)
+    .ToList(); <span class="pl-c">// Results in a List&lt;int&gt;() { 1, 2, 3, 4, 5 }</span>
+
+<span class="pl-c">// Sequence start number and sequence step can be explicitly provided if necessary.</span></pre></div>
+
+<h2>
+<a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Motivation</h2>
+
+<p>Syntax sugar is syntax sugar: it's not a necessary thing per se but it can improve code quality.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Peppermint is a available in a form of a NuGet package.
+Follow regular installation process to bring it to your project.
+<a href="https://www.nuget.org/packages/Peppermint/">https://www.nuget.org/packages/Peppermint/</a></p>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Unit tests are available in Peppermint.Tests project.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>The code is distributed under the MIT license.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Contribution is the best way to improve any project!</p>
+
+<ol>
+<li>Fork it!</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>).</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<p>...or follow steps described in a nice <a href="http://kbroman.org/github_tutorial/pages/fork.html">fork guide</a> by Karl Broman</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/another-guy/Peppermint">Peppermint</a> is maintained by <a href="https://github.com/another-guy">another-guy</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
