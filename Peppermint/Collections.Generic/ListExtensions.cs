@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Peppermint.Lists
+namespace Peppermint.Collections.Generic
 {
     public static class ListExtensions
     {

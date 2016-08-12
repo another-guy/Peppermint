@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Peppermint.Dictionaries;
+using Peppermint.Collections.Generic;
 using Xunit;
 
-namespace Peppermint.Tests.Dictionaries
+namespace Peppermint.Tests.Collections.Generic
 {
-    public class DictionaryExtensionsTests
+    public class DictionaryExtensionsTest
     {
         [Fact]
         public void NullToEmptyReturnsOriginalForNonNullDictionary()

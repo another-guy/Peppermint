@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Peppermint.Lists;
+using Peppermint.Collections.Generic;
 using Xunit;
 
-namespace Peppermint.Tests.Lists
+namespace Peppermint.Tests.Collections.Generic
 {
-    public class ListExtensionsTests
+    public class ListExtensionsTest
     {
         [Fact]
         public void SwapWorks()
@@ -15,7 +15,7 @@ namespace Peppermint.Tests.Lists
 
             // Act
             list.SwapAt(0, 1);
-
+            
             // Assert
             Assert.True(new[] {2, 1}.SequenceEqual(list));
         }
