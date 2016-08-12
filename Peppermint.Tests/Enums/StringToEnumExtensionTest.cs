@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Peppermint.Tests.Enums
 {
-    public class StringToEnumExtensionTests
+    public class StringToEnumExtensionTest
     {
         [Theory]
         [InlineData("ValueA", TestEnum.ValueA)]

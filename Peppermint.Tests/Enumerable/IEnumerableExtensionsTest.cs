@@ -1,16 +1,17 @@
-﻿using System.Linq;
-using Peppermint.Arrays;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
+using Peppermint.Enumerable;
 
-namespace Peppermint.Tests.Arrays
+namespace Peppermint.Tests.Enumerable
 {
-    public class ArrayExtensionsTests
+    public class IEnumerableExtensionsTest
     {
         [Fact]
         public void NullToEmptyReturnsOriginalForNonNullArray()
         {
             // Arrange
-            var ints = new[] {1, 2, 3};
+            IEnumerable<int> ints = new[] { 1, 2, 3 };
 
             // Act
             var result = ints.NullToEmpty();
@@ -23,14 +24,14 @@ namespace Peppermint.Tests.Arrays
         public void NullToEmptyReturnsEmptyForNullArray()
         {
             // Arrange
-            int[] ints = null;
+            IEnumerable<int> ints = null;
 
             // Act
             var result = ints.NullToEmpty();
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(0, result.Length);
+            Assert.Equal(0, result.Count());
         }
     }
 }

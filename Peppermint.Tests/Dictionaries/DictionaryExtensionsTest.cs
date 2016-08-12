@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Peppermint.Tests.Dictionaries
 {
-    public class DictionaryExtensionsTests
+    public class DictionaryExtensionsTest
     {
         [Fact]
         public void NullToEmptyReturnsOriginalForNonNullDictionary()

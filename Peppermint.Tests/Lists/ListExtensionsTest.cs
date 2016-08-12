@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Peppermint.Tests.Lists
 {
-    public class ListExtensionsTests
+    public class ListExtensionsTest
     {
         [Fact]
         public void SwapWorks()
@@ -15,7 +15,7 @@ namespace Peppermint.Tests.Lists
 
             // Act
             list.SwapAt(0, 1);
-
+            
             // Assert
             Assert.True(new[] {2, 1}.SequenceEqual(list));
         }

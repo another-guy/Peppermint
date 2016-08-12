@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Peppermint.Tests.Lists
 {
-    public class SequenceTests
+    public class SequenceTest
     {
         [Fact]
         public void ThrowsException()
