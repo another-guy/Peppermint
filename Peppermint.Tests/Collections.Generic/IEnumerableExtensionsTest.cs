@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Peppermint.Enumerable;
+using Peppermint.Collections.Generic;
 
-namespace Peppermint.Tests.Enumerable
+namespace Peppermint.Tests.Collections.Generic
 {
     public class IEnumerableExtensionsTest
     {

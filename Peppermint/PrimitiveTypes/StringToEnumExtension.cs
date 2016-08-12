@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Peppermint.Enums
+namespace Peppermint.PrimitiveTypes
 {
     public static class StringToEnumExtension
     {

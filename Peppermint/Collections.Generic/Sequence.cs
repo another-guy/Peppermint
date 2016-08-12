@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Peppermint.Lists
+namespace Peppermint.Collections.Generic
 {
     public class Sequence
     {

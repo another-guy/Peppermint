@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Peppermint.Enumerable
+namespace Peppermint.Collections.Generic
 {
     public static class IEnumerableExtensions
     {

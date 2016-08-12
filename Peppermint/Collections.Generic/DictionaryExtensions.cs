@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Peppermint.Dictionaries
+namespace Peppermint.Collections.Generic
 {
     public static class DictionaryExtensions
     {

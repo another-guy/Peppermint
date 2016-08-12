@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Peppermint.Arrays;
+using Peppermint.Collections.Generic;
 using Xunit;
 
-namespace Peppermint.Tests.Arrays
+namespace Peppermint.Tests.Collections.Generic
 {
     public class ArrayExtensionsTest
     {

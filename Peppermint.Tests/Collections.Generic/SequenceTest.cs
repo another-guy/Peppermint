@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Peppermint.Lists;
+using Peppermint.Collections.Generic;
 using Xunit;
 
-namespace Peppermint.Tests.Lists
+namespace Peppermint.Tests.Collections.Generic
 {
     public class SequenceTest
     {

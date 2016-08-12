@@ -1,8 +1,8 @@
 ﻿using System;
-using Peppermint.Enums;
+using Peppermint.PrimitiveTypes;
 using Xunit;
 
-namespace Peppermint.Tests.Enums
+namespace Peppermint.Tests.PrimitiveTypes
 {
     public class StringToEnumExtensionTest
     {
