@@ -10,6 +10,11 @@
             for (var count = 1; count <= number; count++)
                 yield return func();
         }
+        public static void Times(this int number, Action action)
+        {
+            for (var count = 1; count <= number; count++)
+                action();
+        }
 
         public static Range To(this int from, int to, int step = 0)
         {

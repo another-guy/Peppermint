@@ -6,6 +6,7 @@
     using NSubstitute;
     using Xunit;
     using Peppermint.PrimitiveTypes;
+    using Peppermint.Tests.TestUtilities;
 
     public class RangeExtensionsTest
     {
@@ -85,10 +86,5 @@
                 new object[] { -2, -2, -1, 1 },
                 new object[] { 0, -10, -2, 6 }
             };
-    }
-
-    public interface ITarget
-    {
-        void TestMethod();
     }
 }
