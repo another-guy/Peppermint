@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Peppermint.Collections.Generic
+﻿namespace Peppermint.Collections.Generic
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class ListExtensions
     {
         public static void Shuffle<T>(this IList<T> collection, int swapsNumber = -1, int seed = 1)

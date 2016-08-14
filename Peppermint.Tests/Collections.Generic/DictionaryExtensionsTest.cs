@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Peppermint.Collections.Generic;
-using Xunit;
-
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
+    using System.Collections.Generic;
+    using Peppermint.Collections.Generic;
+    using Xunit;
+
     public class DictionaryExtensionsTest
     {
         [Fact]

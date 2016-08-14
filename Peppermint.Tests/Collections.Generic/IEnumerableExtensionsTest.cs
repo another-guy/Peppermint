@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-using Peppermint.Collections.Generic;
-
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Xunit;
+    using Peppermint.Collections.Generic;
+
     public class IEnumerableExtensionsTest
     {
         [Fact]

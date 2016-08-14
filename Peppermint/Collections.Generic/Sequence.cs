@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Peppermint.Collections.Generic
+﻿namespace Peppermint.Collections.Generic
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Sequence
     {
         public static Func<int, int, int> NaturalNumbers = (@base, current) => current + 1;

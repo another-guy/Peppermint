@@ -1,24 +1,49 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Peppermint.Collections.Generic;
-using Xunit;
-
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Peppermint.Collections.Generic;
+    using Xunit;
+
     public class ListExtensionsTest
     {
-        [Fact]
-        public void SwapWorks()
+        [Theory]
+        [MemberData(nameof(SwapAtWorksData))]
+        public void SwapAtWorksOnArray(int index1, int index2, object[] initial, object[] expected)
         {
             // Arrange
-            var list = new[] {1, 2};
+            // Act
+            initial.SwapAt(index1, index2);
+            var result = initial;
+
+            // Assert
+            Assert.True(expected.SequenceEqual(result));
+        }
+
+        [Theory]
+        [MemberData(nameof(SwapAtWorksData))]
+        public void SwapAtWorksOnList(int index1, int index2, object[] initial, object[] expected)
+        {
+            // Arrange
+            var list = initial.ToList();
 
             // Act
-            list.SwapAt(0, 1);
-            
+            list.SwapAt(index1, index2);
+            var result = list;
+
             // Assert
-            Assert.True(new[] {2, 1}.SequenceEqual(list));
+            Assert.True(expected.SequenceEqual(result));
         }
+
+        public static IEnumerable<object[]> SwapAtWorksData =
+            new List<object[]> {
+                new object[] { 0, 1, new object[] { 0, 1 }, new object[] { 1, 0 } },
+                new object[] { 1, 0, new object[] { 0, 1 }, new object[] { 1, 0 } },
+                new object[] { 0, 1, new object[] { 0, 1, 2 }, new object[] { 1, 0, 2 } },
+                new object[] { 0, 2, new object[] { 0, 1, 2 }, new object[] { 2, 1, 0 } },
+                new object[] { 1, 2, new object[] { 0, 1, 2 }, new object[] { 0, 2, 1 } },
+                new object[] { 1, 0, new object[] { 0, 1, 2 }, new object[] { 1, 0, 2 } }
+            };
 
         [Fact]
         public void ShuffleWorks()

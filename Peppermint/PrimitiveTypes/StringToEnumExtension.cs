@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Peppermint.PrimitiveTypes
+﻿namespace Peppermint.PrimitiveTypes
 {
+    using System;
+
     public static class StringToEnumExtension
     {
         public static TEnum Parse<TEnum>(this string @string)

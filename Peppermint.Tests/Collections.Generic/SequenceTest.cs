@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using Peppermint.Collections.Generic;
-using Xunit;
-
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
+    using System;
+    using System.Linq;
+    using Peppermint.Collections.Generic;
+    using Xunit;
+
     public class SequenceTest
     {
         [Fact]
