@@ -8,7 +8,7 @@
     public class ListExtensionsTest
     {
         [Theory]
-        [MemberData(nameof(SwapAtWorksData))]
+        [MemberData(nameof(ArraySwapAtWorksData))]
         public void SwapAtWorksOnArray(int index1, int index2, object[] initial, object[] expected)
         {
             // Arrange
@@ -20,8 +20,19 @@
             Assert.True(expected.SequenceEqual(result));
         }
 
+        public static IEnumerable<object[]> ArraySwapAtWorksData =
+            new List<object[]> {
+                new object[] { 0, 0, new object[] { 1 }, new object[] { 1 } },
+                new object[] { 0, 1, new object[] { 0, 1 }, new object[] { 1, 0 } },
+                new object[] { 1, 0, new object[] { 0, 1 }, new object[] { 1, 0 } },
+                new object[] { 0, 1, new object[] { 0, 1, 2 }, new object[] { 1, 0, 2 } },
+                new object[] { 0, 2, new object[] { 0, 1, 2 }, new object[] { 2, 1, 0 } },
+                new object[] { 1, 2, new object[] { 0, 1, 2 }, new object[] { 0, 2, 1 } },
+                new object[] { 1, 0, new object[] { 0, 1, 2 }, new object[] { 1, 0, 2 } }
+            };
+
         [Theory]
-        [MemberData(nameof(SwapAtWorksData))]
+        [MemberData(nameof(ListSwapAtWorksData))]
         public void SwapAtWorksOnList(int index1, int index2, object[] initial, object[] expected)
         {
             // Arrange
@@ -32,11 +43,12 @@
             var result = list;
 
             // Assert
-            Assert.True(expected.SequenceEqual(result), $"{expected} != {result}");
+            Assert.True(expected.SequenceEqual(result), $"{expected.AsString()} != {result.AsString()}");
         }
 
-        public static IEnumerable<object[]> SwapAtWorksData =
+        public static IEnumerable<object[]> ListSwapAtWorksData =
             new List<object[]> {
+                new object[] { 0, 0, new object[] { 1 }, new object[] { 1 } },
                 new object[] { 0, 1, new object[] { 0, 1 }, new object[] { 1, 0 } },
                 new object[] { 1, 0, new object[] { 0, 1 }, new object[] { 1, 0 } },
                 new object[] { 0, 1, new object[] { 0, 1, 2 }, new object[] { 1, 0, 2 } },

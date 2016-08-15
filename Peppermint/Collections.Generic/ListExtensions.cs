@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class ListExtensions
     {
@@ -21,6 +22,16 @@
             var temp = collection[index1];
             collection[index1] = collection[index2];
             collection[index2] = temp;
+        }
+
+        public static string AsString<T>(this IList<T> collection)
+        {
+            var items = collection
+                .Skip(1)
+                .Aggregate("", (accumulate, item) => accumulate + ", " + item);
+            items = collection.First() + items;
+
+            return "[" + items + "]";
         }
     }
 }
