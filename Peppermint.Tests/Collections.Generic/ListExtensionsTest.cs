@@ -32,7 +32,7 @@
             var result = list;
 
             // Assert
-            Assert.True(expected.SequenceEqual(result));
+            Assert.True(expected.SequenceEqual(result), $"{expected} != {result}");
         }
 
         public static IEnumerable<object[]> SwapAtWorksData =
