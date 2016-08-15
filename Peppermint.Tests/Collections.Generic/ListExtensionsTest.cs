@@ -24,11 +24,8 @@
         [MemberData(nameof(SwapAtWorksData))]
         public void SwapAtWorksOnList(int index1, int index2, object[] initial, object[] expected)
         {
-            int z = 0;
-            int x = 1 / z;
-
             // Arrange
-            var list = initial.ToList();
+            List<object> list = initial.ToList();
 
             // Act
             list.SwapAt(index1, index2);
