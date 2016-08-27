@@ -1,5 +1,7 @@
 ﻿## Synopsis
 
+[![Peppermint](https://github.com/another-guy/Peppermint/raw/master/Peppermint.png)](https://github.com/another-guy/Peppermint)
+
 Provides a bit of C# syntactic sugar
 
 ## Code Example
