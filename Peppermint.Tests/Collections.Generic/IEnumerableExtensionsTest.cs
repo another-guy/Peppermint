@@ -1,4 +1,5 @@
-﻿namespace Peppermint.Tests.Collections.Generic
+﻿using Xunit;
+namespace Peppermint.Tests.Collections.Generic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -69,6 +70,30 @@
 
             // Assert
             Assert.True(new int[] { 2 }.SequenceEqual(projected));
+        }
+
+        [Fact]
+        public void CanFlexProjectToEnumerable()
+        {
+            // Act
+            var projected = ints.FlexProject(item => ((ProjectAs<IEnumerable<int>>)new[] { item, item, item }));
+
+            // Assert
+            Assert.True(new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 }.SequenceEqual(projected));
+        }
+
+        [Fact]
+        public void CanFlexProjectToEnumerableWithBetterSyntax()
+        {
+            // Act
+            var projected = ints.FlexProject(item => {
+                return item == 2 ?
+                    ProjectAs<IEnumerable<int>>.Nothing:
+                    new[] { item, item, item };
+            });
+
+            // Assert
+            Assert.True(new int[] { 1, 1, 1, 3, 3, 3 }.SequenceEqual(projected));
         }
     }
 }

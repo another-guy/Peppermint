@@ -21,5 +21,17 @@
                     yield return selectorApplicationResult.Value;
             }
         }
+        public static IEnumerable<TResult> FlexProject<T, TResult>(
+            this IEnumerable<T> source,
+            Func<T, ProjectAs<IEnumerable<TResult>>> smartSelector)
+        {
+            foreach (T item in source)
+            {
+                var selectorApplicationResult = smartSelector(item);
+                if (selectorApplicationResult.DoProjectValue)
+                    foreach (var projectedItemFromMany in selectorApplicationResult.Value)
+                        yield return projectedItemFromMany;
+            }
+        }
     }
 }
