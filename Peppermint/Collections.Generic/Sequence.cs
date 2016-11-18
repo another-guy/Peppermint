@@ -1,7 +1,6 @@
-﻿namespace Peppermint.Collections.Generic
+﻿namespace System.Collections.Generic
 {
     using System;
-    using System.Collections.Generic;
 
     public class Sequence
     {

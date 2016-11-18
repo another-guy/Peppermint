@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Peppermint.Collections.Generic;
     using Xunit;
 
     public class ListExtensionsTest

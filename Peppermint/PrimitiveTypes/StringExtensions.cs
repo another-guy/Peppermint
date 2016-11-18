@@ -1,6 +1,6 @@
 ﻿namespace Peppermint.PrimitiveTypes
 {
-    using Peppermint.Collections.Generic;
+    using System.Collections.Generic;
 
     public static class StringExtensions
     {

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-    using Peppermint.Collections.Generic;
+    using System.Collections.Generic;
     using Xunit;
 
     public class SequenceTest
