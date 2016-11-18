@@ -1,6 +1,6 @@
 {
   "title": "Peppermint",
-  "version": "1.0.2-*",
+  "version": "1.0.3-*",
   "description": "Provides a bit of C# syntactic sugar",
   "authors": [ "Igor Soloydenko" ],
   "copyright": "MIT",
