@@ -1,7 +1,5 @@
-﻿namespace Peppermint.Collections.Generic
+﻿namespace System.Collections.Generic
 {
-    using System.Collections.Generic;
-
     public static class DictionaryExtensions
     {
         public static IDictionary<TK, TV> NullToEmpty<TK, TV>(this IDictionary<TK, TV> target)

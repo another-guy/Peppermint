@@ -1,4 +1,4 @@
-﻿namespace Peppermint.Collections.Generic
+﻿namespace System.Collections.Generic
 {
     public static class ArrayExtensions
     {
