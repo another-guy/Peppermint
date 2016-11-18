@@ -46,6 +46,30 @@ MyEnum <span class="pl-k">value</span> = @<span class="pl-k">string</span>.Parse
 dict = dict.NullToEmpty();
 <span class="pl-k">var</span> size = dict.Count; <span class="pl-c">// size == 0, no exception here.</span></pre></div>
 
+<p>IEnumerableExtensions:</p>
+
+<pre><code>new int[] { 1, 2, 3, 4, 5 }
+    .TakeProject(
+        item =&gt; item % 2 == 0,
+        item =&gt; $"{item} Mississippi"); // -&gt;  { "2 Mississippi", "4 Mississippi" }
+
+
+new int[] { 1, 2, 3, 4, 5 }
+    .SkipProject(
+        item =&gt; item &gt; 2,
+        item =&gt; $"{item} Mississippi"); // -&gt;  { "1 Mississippi", "2 Mississippi" }
+
+new int[] { 1, 2 }
+    .TakeProjectMany(
+        item =&gt; item &lt; 2,
+        item =&gt; new int[] { item, item, item }); // -&gt;  { 1, 1, 1 }
+
+new int[] { 1, 2 }
+    .SkipProjectMany(
+        item =&gt; item &lt; 2,
+        item =&gt; new int[] { item, item, item }); // -&gt;  { 2, 2, 2 }
+</code></pre>
+
 <p>ArrayExtensions:</p>
 
 <div class="highlight highlight-source-cs"><pre><span class="pl-k">string</span>[] array = <span class="pl-c1">null</span>;
