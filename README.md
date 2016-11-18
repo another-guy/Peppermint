@@ -26,6 +26,30 @@ dict = dict.NullToEmpty();
 var size = dict.Count; // size == 0, no exception here.
 ```
 
+IEnumerableExtensions:
+```
+new int[] { 1, 2, 3, 4, 5 }
+	.TakeProject(
+		item => item % 2 == 0,
+		item => $"{item} Mississippi"); // ->  { "2 Mississippi", "4 Mississippi" }
+		
+		
+new int[] { 1, 2, 3, 4, 5 }
+	.SkipProject(
+		item => item > 2,
+		item => $"{item} Mississippi"); // ->  { "1 Mississippi", "2 Mississippi" }
+		
+new int[] { 1, 2 }
+	.TakeProjectMany(
+		item => item < 2,
+		item => new int[] { item, item, item }); // ->  { 1, 1, 1 }
+		
+new int[] { 1, 2 }
+	.SkipProjectMany(
+		item => item < 2,
+		item => new int[] { item, item, item }); // ->  { 2, 2, 2 }
+```
+
 ArrayExtensions:
 ```cs
 string[] array = null;
