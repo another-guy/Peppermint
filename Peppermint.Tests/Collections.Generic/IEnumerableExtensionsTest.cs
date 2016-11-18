@@ -1,11 +1,9 @@
-﻿using Xunit;
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
     using System.Collections.Generic;
     using System.Linq;
     using Xunit;
     using Peppermint.Collections.Generic;
-    using System;
 
     public class IEnumerableExtensionsTest
     {
@@ -33,67 +31,54 @@ namespace Peppermint.Tests.Collections.Generic
         }
 
         [Fact]
-        public void CanFlexProjectEverythingAsIs()
+        public void CanTakeProjectEverythingAsIs()
         {
             // Act
-            var projected = ints.FlexProject(item => (ProjectAs<int>)item);
+            var projected = ints.TakeProject(item => true, item => item);
 
             // Assert
             Assert.True(ints.SequenceEqual(projected));
         }
 
         [Fact]
-        public void CanFlexProjectNothing()
+        public void CanTakeProjectNothing()
         {
             // Act
-            var projected = ints.FlexProject(item => ProjectAs<int>.Nothing);
+            var projected = ints.TakeProject(item => false, item => item);
 
             // Assert
             Assert.True(new List<int>().SequenceEqual(projected));
         }
 
         [Fact]
-        public void CanFlexProjectAndChangeType()
+        public void CanTakeProjectAndChangeType()
         {
             // Act
-            var projected = ints.FlexProject(item => (ProjectAs<string>)item.ToString());
+            var projected = ints.TakeProject(item => true, item => item.ToString());
 
             // Assert
             Assert.True(new string[] { "1", "2", "3" }.SequenceEqual(projected));
         }
 
         [Fact]
-        public void CanFlexProjectPartially()
+        public void CanTakeProjectPartially()
         {
             // Act
-            var projected = ints.FlexProject(item => item % 2 == 0 ? item : ProjectAs<int>.Nothing);
+            var projected = ints.TakeProject(item => item % 2 == 0, item => item);
 
             // Assert
             Assert.True(new int[] { 2 }.SequenceEqual(projected));
         }
 
         [Fact]
-        public void CanFlexProjectToEnumerable()
+        public void CanTakeProjectMany()
         {
             // Act
-            var projected = ints.FlexProject(item => ((ProjectAs<IEnumerable<int>>)new[] { item, item, item }));
+            var projected = ints.TakeProjectMany(item => true, item => new List<int> { item, item, item });
 
             // Assert
             Assert.True(new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 }.SequenceEqual(projected));
         }
 
-        [Fact]
-        public void CanFlexProjectToEnumerableWithBetterSyntax()
-        {
-            // Act
-            var projected = ints.FlexProject(item => {
-                return item == 2 ?
-                    ProjectAs<IEnumerable<int>>.Nothing:
-                    new[] { item, item, item };
-            });
-
-            // Assert
-            Assert.True(new int[] { 1, 1, 1, 3, 3, 3 }.SequenceEqual(projected));
-        }
     }
 }

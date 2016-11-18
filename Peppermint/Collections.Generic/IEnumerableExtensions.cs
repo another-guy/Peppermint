@@ -10,28 +10,43 @@
             return target ?? new T[0];
         }
 
-        public static IEnumerable<TResult> FlexProject<T, TResult>(
+        public static IEnumerable<TResult> TakeProject<T, TResult>(
             this IEnumerable<T> source,
-            Func<T, ProjectAs<TResult>> smartSelector)
+            Predicate<T> takePredicate,
+            Func<T, TResult> projectFunction)
         {
             foreach (T item in source)
-            {
-                var selectorApplicationResult = smartSelector(item);
-                if (selectorApplicationResult.DoProjectValue)
-                    yield return selectorApplicationResult.Value;
-            }
+                if (takePredicate(item))
+                    yield return projectFunction(item);
         }
-        public static IEnumerable<TResult> FlexProject<T, TResult>(
+
+        public static IEnumerable<TResult> SkipProject<T, TResult>(
             this IEnumerable<T> source,
-            Func<T, ProjectAs<IEnumerable<TResult>>> smartSelector)
+            Predicate<T> skipPredicate,
+            Func<T, TResult> projectFunction)
+        {
+            Predicate<T> takePredicate = element => skipPredicate(element) == false;
+            return source.TakeProject(takePredicate, projectFunction);
+        }
+
+        public static IEnumerable<TResult> TakeProjectMany<T, TResult>(
+            this IEnumerable<T> source,
+            Predicate<T> takePredicate,
+            Func<T, IEnumerable<TResult>> projectFunction)
         {
             foreach (T item in source)
-            {
-                var selectorApplicationResult = smartSelector(item);
-                if (selectorApplicationResult.DoProjectValue)
-                    foreach (var projectedItemFromMany in selectorApplicationResult.Value)
-                        yield return projectedItemFromMany;
-            }
+                if (takePredicate(item))
+                    foreach (var projectedResult in projectFunction(item))
+                        yield return projectedResult;
+        }
+
+        public static IEnumerable<TResult> SkipProjectMany<T, TResult>(
+            this IEnumerable<T> source,
+            Predicate<T> skipPredicate,
+            Func<T, IEnumerable<TResult>> projectFunction)
+        {
+            Predicate<T> takePredicate = element => skipPredicate(element) == false;
+            return source.TakeProjectMany(takePredicate, projectFunction);
         }
     }
 }
