@@ -48,7 +48,7 @@
             return source.TakeProjectMany(takePredicate, projectFunction);
         }
 
-        public static void ForAll<T>(
+        public static void ForEach<T>(
             this IEnumerable<T> source,
             Action<T> action)
         {

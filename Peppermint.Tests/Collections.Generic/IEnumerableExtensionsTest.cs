@@ -87,7 +87,7 @@ namespace Peppermint.Tests.Collections.Generic
         [InlineData(2)]
         [InlineData(5)]
         [InlineData(1024)]
-        public void ForAll(int totalItems)
+        public void ForEach(int totalItems)
         {
             // Arrange
             var helper = Substitute.For<ITestHelper<int>>();
@@ -96,7 +96,7 @@ namespace Peppermint.Tests.Collections.Generic
                 enumerable.Add(i + 1);
 
             // Act
-            enumerable.ForAll(item => helper.Register(item));
+            IEnumerableExtensions.ForEach(enumerable, item => helper.Register(item));
 
             // Assert
             foreach (var value in enumerable)
