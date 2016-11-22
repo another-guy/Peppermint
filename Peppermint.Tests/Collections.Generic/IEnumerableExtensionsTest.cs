@@ -1,5 +1,7 @@
-﻿namespace Peppermint.Tests.Collections.Generic
+﻿using Xunit;
+namespace Peppermint.Tests.Collections.Generic
 {
+    using NSubstitute;
     using System.Collections.Generic;
     using System.Linq;
     using Xunit;
@@ -79,5 +81,31 @@
             Assert.True(new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 }.SequenceEqual(projected));
         }
 
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(5)]
+        [InlineData(1024)]
+        public void ForAll(int totalItems)
+        {
+            // Arrange
+            var helper = Substitute.For<ITestHelper<int>>();
+            var enumerable = new List<int>();
+            for (var i = 0; i < totalItems; i++)
+                enumerable.Add(i + 1);
+
+            // Act
+            enumerable.ForAll(item => helper.Register(item));
+
+            // Assert
+            foreach (var value in enumerable)
+                helper.Received(1).Register(value);
+        }
+    }
+
+    public interface ITestHelper<T>
+    {
+        void Register(T item);
     }
 }

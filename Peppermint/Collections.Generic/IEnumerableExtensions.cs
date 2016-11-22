@@ -47,5 +47,13 @@
             Predicate<T> takePredicate = element => skipPredicate(element) == false;
             return source.TakeProjectMany(takePredicate, projectFunction);
         }
+
+        public static void ForAll<T>(
+            this IEnumerable<T> source,
+            Action<T> action)
+        {
+            foreach (var item in source)
+                action(item);
+        }
     }
 }
