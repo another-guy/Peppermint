@@ -5,7 +5,6 @@
     using System.Collections.Generic;
     using NSubstitute;
     using Xunit;
-    using Peppermint.PrimitiveTypes;
     using Peppermint.Tests.TestUtilities;
 
     public class RangeExtensionsTest

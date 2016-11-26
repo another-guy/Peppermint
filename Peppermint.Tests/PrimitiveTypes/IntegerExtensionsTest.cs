@@ -4,7 +4,6 @@
     using System.Linq;
     using NSubstitute;
     using Xunit;
-    using Peppermint.PrimitiveTypes;
     using TestUtilities;
 
     public class IntegerExtensionsTest

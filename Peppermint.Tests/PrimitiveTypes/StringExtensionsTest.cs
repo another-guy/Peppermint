@@ -1,7 +1,7 @@
 ﻿namespace Peppermint.Tests.PrimitiveTypes
 {
+    using System;
     using Xunit;
-    using Peppermint.PrimitiveTypes;
 
     public class StringExtensionsTest
     {

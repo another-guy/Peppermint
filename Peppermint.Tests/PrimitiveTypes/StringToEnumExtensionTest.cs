@@ -1,5 +1,4 @@
 ﻿using System;
-using Peppermint.PrimitiveTypes;
 using Xunit;
 
 namespace Peppermint.Tests.PrimitiveTypes

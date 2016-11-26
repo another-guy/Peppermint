@@ -2,7 +2,6 @@
 {
     using System;
     using Xunit;
-    using Peppermint.PrimitiveTypes;
 
     public class RangeTests
     {

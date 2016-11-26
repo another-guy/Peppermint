@@ -1,7 +1,5 @@
-﻿namespace Peppermint.PrimitiveTypes
+﻿namespace System
 {
-    using System;
-
     public struct Range
     {
         public Range(int from, int to, int step)
