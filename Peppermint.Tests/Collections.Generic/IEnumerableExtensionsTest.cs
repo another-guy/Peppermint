@@ -1,5 +1,4 @@
-﻿using Xunit;
-namespace Peppermint.Tests.Collections.Generic
+﻿namespace Peppermint.Tests.Collections.Generic
 {
     using NSubstitute;
     using System.Collections.Generic;
