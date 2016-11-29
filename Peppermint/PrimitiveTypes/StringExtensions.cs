@@ -22,5 +22,25 @@
             }
             return new string(chars);
         }
+
+        public static string NullToEmpty(this string target)
+        {
+            return target.NullTo(string.Empty);
+        }
+
+        public static string NullTo(this string target, string replacingValue)
+        {
+            return target ?? replacingValue;
+        }
+
+        public static string NullOrEmptyTo(this string target, string replacingValue)
+        {
+            return string.IsNullOrEmpty(target) ? target : replacingValue;
+        }
+
+        public static string NullOrWhiteSpaceTo(this string target, string replacingValue)
+        {
+            return string.IsNullOrWhiteSpace(target) ? target : replacingValue;
+        }
     }
 }
