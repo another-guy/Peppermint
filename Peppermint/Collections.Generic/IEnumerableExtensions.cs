@@ -1,6 +1,7 @@
 ﻿namespace System.Collections.Generic
 {
     using System;
+    using System.Linq;
 
     public static class IEnumerableExtensions
     {
@@ -54,6 +55,13 @@
         {
             foreach (var item in source)
                 action(item);
+        }
+
+        public static bool None<T>(
+            this IEnumerable<T> source,
+            Predicate<T> predicate)
+        {
+            return source.All(item => predicate(item) == false);
         }
     }
 }
