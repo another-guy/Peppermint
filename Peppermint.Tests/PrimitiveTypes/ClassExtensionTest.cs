@@ -6,27 +6,27 @@ namespace Peppermint.Tests.PrimitiveTypes
     public class ClassExtensionTest
     {
         [Fact]
-        public void NullToEmptyCreatesNewObjectFromOriginalNull()
+        public void NullToNewCreatesNewObjectFromOriginalNull()
         {
             // Arrange
             object sut = null;
 
             // Act
-            sut = sut.NullToEmpty();
+            sut = sut.NullToNew();
 
             // Assert
             Assert.NotNull(sut);
         }
 
         [Fact]
-        public void NullToEmptyReturnsOriginalObjectFromNonNull()
+        public void NullToNewReturnsOriginalObjectFromNonNull()
         {
             // Arrange
             var sut = new object();
             var hashCode = sut.GetHashCode();
 
             // Act
-            sut = sut.NullToEmpty();
+            sut = sut.NullToNew();
 
             // Assert
             Assert.NotNull(sut);

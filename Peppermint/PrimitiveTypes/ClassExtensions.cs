@@ -2,10 +2,16 @@
 {
     public static class ClassExtensions
     {
-        public static T NullToEmpty<T>(this T target)
+        public static T NullToNew<T>(this T target)
             where T: class, new()
         {
-            return target ?? new T();
+            return target.NullTo(new T());
+        }
+
+        public static T NullTo<T>(this T target, T alternative)
+            where T: class
+        {
+            return target ?? alternative;
         }
     }
 }
