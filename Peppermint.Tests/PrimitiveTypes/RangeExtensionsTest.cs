@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using NSubstitute;
     using Xunit;
-    using Peppermint.Tests.TestUtilities;
+    using TestUtilities;
 
     public class RangeExtensionsTest
     {
@@ -18,6 +18,7 @@
             action = target.TestMethod;
         }
 
+        // This test theory exists to check backwards compatibility.
         [Theory]
         [MemberData(nameof(ToSequenceTestData))]
         public void ToSequenceWorks(int from, int to, int step, int[] expected)
@@ -26,9 +27,7 @@
             var range = new Range(from, to, step);
 
             // Act
-            var list = range
-                .ToSequence(i => i)
-                .ToList();
+            var list = range.ToList();
 
             // Assert
             Assert.True(expected.SequenceEqual(list));
