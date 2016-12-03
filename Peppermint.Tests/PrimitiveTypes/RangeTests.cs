@@ -1,6 +1,7 @@
 ﻿namespace Peppermint.Tests.PrimitiveTypes
 {
     using System;
+    using System.Linq;
     using Xunit;
 
     public class RangeTests
@@ -17,6 +18,34 @@
 
             // Assert
             Assert.Equal(error, caught.Message);
+        }
+
+        [Fact]
+        public void RangeWithPositiveStepTranslatesIntoCorrectEnumerable()
+        {
+            // Arrange
+            var range = new Range(-5, 5, +2);
+            var expected = new[] { -5, -3, -1, 1, 3, 5 };
+
+            // Act
+            var rangeAsEnumerable = range.ToList();
+
+            // Assert
+            Assert.True(expected.SequenceEqual(range));
+        }
+
+        [Fact]
+        public void RangeWithNegativeStepTranslatesIntoCorrectEnumerable()
+        {
+            // Arrange
+            var range = new Range(5, -5, -2);
+            var expected = new[] { 5, 3, 1, -1, -3, -5 };
+
+            // Act
+            var rangeAsEnumerable = range.ToList();
+
+            // Assert
+            Assert.True(expected.SequenceEqual(range));
         }
     }
 }

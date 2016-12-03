@@ -1,8 +1,11 @@
 ﻿namespace System
 {
-    public struct Range
+    using Collections;
+    using Collections.Generic;
+
+    public struct Range: IEnumerable<int>
     {
-        public Range(int from, int to, int step)
+        public Range(int from, int to, int step = 0)
         {
             if (step == 0)
             {
@@ -25,5 +28,18 @@
         public int from;
         public int to;
         public int step;
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            for (var current = from;
+                step > 0 ? current <= to : current >= to;
+                current += step)
+                yield return current;
+        }
     }
 }
