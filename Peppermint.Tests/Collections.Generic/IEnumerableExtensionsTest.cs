@@ -101,6 +101,24 @@
             foreach (var value in enumerable)
                 helper.Received(1).Register(value);
         }
+
+        [Fact]
+        public void NoneCanCorrectlyReturnTrue()
+        {
+            // Act
+            var noneAreGreaterThanFive = ints.None(item => item > 5);
+            // Assert
+            Assert.True(noneAreGreaterThanFive);
+        }
+
+        [Fact]
+        public void NoneCanCorrectlyReturnFalse()
+        {
+            // Act
+            var noneAreLessThanFive = ints.None(item => item < 5);
+            // Assert
+            Assert.False(noneAreLessThanFive);
+        }
     }
 
     public interface ITestHelper<T>
