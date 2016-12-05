@@ -32,5 +32,28 @@ namespace Peppermint.Tests.PrimitiveTypes
             Assert.NotNull(sut);
             Assert.Equal(hashCode, sut.GetHashCode());
         }
+
+        [Fact]
+        public void NullToExceptionThrowsOnNullObject()
+        {
+            object target = null;
+            var name = nameof(target);
+
+            var caught = Assert.Throws<ArgumentNullException>(() =>
+                target.NullToException(new ArgumentNullException(name)));
+
+            Assert.Equal(name, caught.ParamName);
+        }
+
+        [Fact]
+        public void NullToExceptionReturnsSelfWhenObjectIsNotNull()
+        {
+            var target = new object();
+            var name = nameof(target);
+
+            var result = target.NullToException(new ArgumentNullException(name));
+
+            Assert.Same(target, result);
+        }
     }
 }
