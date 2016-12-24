@@ -76,5 +76,35 @@
             // Assert
             Assert.True(caught.Message.Contains("prefix"));
         }
+
+        [Theory]
+        [InlineData("test", 1, "est")]
+        [InlineData("test", 2, "st")]
+        [InlineData("test", 3, "t")]
+        [InlineData("test", 4, "")]
+        [InlineData("test", 5, "")]
+        public void TrimFirstWorks(string original, int trimCount, string expected)
+        {
+            // Arrange
+            // Act
+            var actual = original.TrimFirst(trimCount);
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("test", 1, "tes")]
+        [InlineData("test", 2, "te")]
+        [InlineData("test", 3, "t")]
+        [InlineData("test", 4, "")]
+        [InlineData("test", 5, "")]
+        public void TrimLastWorks(string original, int trimCount, string expected)
+        {
+            // Arrange
+            // Act
+            var actual = original.TrimLast(trimCount);
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
