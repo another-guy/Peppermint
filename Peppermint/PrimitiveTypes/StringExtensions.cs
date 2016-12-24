@@ -42,5 +42,17 @@
         {
             return string.IsNullOrWhiteSpace(target) ? target : replacingValue;
         }
+
+        public static string WithSuffix(this string target, string suffix)
+        {
+            var suffixToApply = suffix.NullToException(new ArgumentNullException(nameof(suffix)));
+            return $"{target}{suffixToApply}";
+        }
+
+        public static string WithPrefix(this string target, string prefix)
+        {
+            var prefixToApply = prefix.NullToException(new ArgumentNullException(nameof(prefix)));
+            return $"{prefixToApply}{target}";
+        }
     }
 }
