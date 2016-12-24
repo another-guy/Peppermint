@@ -54,5 +54,19 @@
             var prefixToApply = prefix.NullToException(new ArgumentNullException(nameof(prefix)));
             return $"{prefixToApply}{target}";
         }
+
+        public static string TrimFirst(this string target, int count)
+        {
+            var possibleOutOfBoundaryStartIndex = count;
+            var startIndex = Math.Min(target.Length, possibleOutOfBoundaryStartIndex);
+            return target.Substring(startIndex);
+        }
+
+        public static string TrimLast(this string target, int count)
+        {
+            var possibleNegativeLength = target.Length - count;
+            var length = Math.Max(0, possibleNegativeLength);
+            return target.Substring(0, length);
+        }
     }
 }
