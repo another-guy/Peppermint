@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Peppermint.Tests.PrimitiveTypes
 {
-    public class ClassExtensionTest
+    public class ClassExtensionsTest
     {
         [Fact]
         public void NullToNewCreatesNewObjectFromOriginalNull()
