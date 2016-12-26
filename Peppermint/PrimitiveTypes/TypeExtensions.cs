@@ -20,14 +20,20 @@ namespace System
             }
         }
 
-        public static bool IsStrictlyChildClassOf(this Type childType, Type parentType)
+        // TODO Rename these methods !!!
+        public static bool IsStrictlyChildOfClass(this Type childClassType, Type parentClassType)
         {
-            return childType.GetAllBaseTypes().Any(baseType => baseType == parentType);
+            return childClassType.GetAllBaseTypes().Any(baseType => baseType == parentClassType);
         }
 
-        public static bool IsStrictlyParentClassOf(this Type parentType, Type childType)
+        public static bool IsStrictlyParentOfClass(this Type parentClassType, Type childClassType)
         {
-            return childType.IsStrictlyChildClassOf(parentType);
+            return childClassType.IsStrictlyChildOfClass(parentClassType);
+        }
+
+        public static bool IsStrictlyChildOfInterface(this Type childType, Type parentInterfaceType)
+        {
+            return childType.GetInterfaces().Any(baseInterface => baseInterface == parentInterfaceType);
         }
     }
 }
