@@ -47,11 +47,11 @@ namespace Peppermint.Tests.PrimitiveTypes
         [InlineData(typeof(GrandChildClass), typeof(ChildClass), false)]
         [InlineData(typeof(GrandChildClass), typeof(ParentClass), false)]
 
-        public void IsStrictlyParentOfClassWorks(Type parentType, Type childType, bool expectedResult)
+        public void IsStrictlyParentClassOfWorks(Type parentType, Type childType, bool expectedResult)
         {
             // Arrange
             // Act
-            var actualResult = parentType.IsStrictlyParentOfClass(childType);
+            var actualResult = parentType.IsStrictlyParentClassOf(childType);
             // Assert
             Assert.Equal(expectedResult, actualResult);
         }
@@ -69,6 +69,24 @@ namespace Peppermint.Tests.PrimitiveTypes
             // Arrange
             // Act
             var actualResult = childType.IsStrictlyChildOfInterface(parentInterfaceType);
+            // Assert
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+
+        [Theory]
+        [InlineData(typeof(IList), typeof(IList<int>), false)]
+        [InlineData(typeof(ICollection<int>), typeof(IList<int>), true)]
+        [InlineData(typeof(IEnumerable<int>), typeof(IList<int>), true)]
+        [InlineData(typeof(IEnumerable), typeof(IList<int>), true)]
+        [InlineData(typeof(ICollection), typeof(IList), true)]
+        [InlineData(typeof(IEnumerable), typeof(IList), true)]
+        [InlineData(typeof(IList<int>), typeof(IList), false)]
+        public void IsStrictlyParentInterfaceOfWorks(Type parentInterfaceType, Type childType, bool expectedResult)
+        {
+            // Arrange
+            // Act
+            var actualResult = parentInterfaceType.IsStrictlyParentInterfaceOf(childType);
             // Assert
             Assert.Equal(expectedResult, actualResult);
         }

@@ -19,14 +19,13 @@ namespace System
                 yield return currentType;
             }
         }
-
-        // TODO Rename these methods !!!
+        
         public static bool IsStrictlyChildOfClass(this Type childClassType, Type parentClassType)
         {
             return childClassType.GetAllBaseTypes().Any(baseType => baseType == parentClassType);
         }
 
-        public static bool IsStrictlyParentOfClass(this Type parentClassType, Type childClassType)
+        public static bool IsStrictlyParentClassOf(this Type parentClassType, Type childClassType)
         {
             return childClassType.IsStrictlyChildOfClass(parentClassType);
         }
@@ -34,6 +33,11 @@ namespace System
         public static bool IsStrictlyChildOfInterface(this Type childType, Type parentInterfaceType)
         {
             return childType.GetInterfaces().Any(baseInterface => baseInterface == parentInterfaceType);
+        }
+
+        public static bool IsStrictlyParentInterfaceOf(this Type parentInterfaceType, Type childType)
+        {
+            return childType.IsStrictlyChildOfInterface(parentInterfaceType);
         }
     }
 }
