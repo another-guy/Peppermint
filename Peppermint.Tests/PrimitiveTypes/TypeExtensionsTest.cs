@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -33,6 +32,24 @@ namespace Peppermint.Tests.PrimitiveTypes
             // Arrange
             // Act
             var actualResult = childType.IsStrictlyChildClassOf(parentType);
+            // Assert
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        [Theory]
+        [InlineData(typeof(object), typeof(ChildClass), true)]
+        [InlineData(typeof(ParentClass), typeof(ChildClass), true)]
+        [InlineData(typeof(ChildClass), typeof(GrandChildClass), true)]
+        [InlineData(typeof(ParentClass), typeof(GrandChildClass), true)]
+        [InlineData(typeof(ChildClass), typeof(ParentClass), false)]
+        [InlineData(typeof(GrandChildClass), typeof(ChildClass), false)]
+        [InlineData(typeof(GrandChildClass), typeof(ParentClass), false)]
+
+        public void IsStrictlyParentClassOfWorks(Type parentType, Type childType, bool expectedResult)
+        {
+            // Arrange
+            // Act
+            var actualResult = parentType.IsStrictlyParentClassOf(childType);
             // Assert
             Assert.Equal(expectedResult, actualResult);
         }

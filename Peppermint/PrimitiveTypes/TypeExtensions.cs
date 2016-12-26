@@ -24,5 +24,10 @@ namespace System
         {
             return childType.GetAllBaseTypes().Any(baseType => baseType == parentType);
         }
+
+        public static bool IsStrictlyParentClassOf(this Type parentType, Type childType)
+        {
+            return childType.IsStrictlyChildClassOf(parentType);
+        }
     }
 }
