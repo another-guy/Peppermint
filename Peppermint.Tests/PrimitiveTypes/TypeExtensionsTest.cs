@@ -6,6 +6,7 @@ namespace Peppermint.Tests.PrimitiveTypes
 {
     public class TypeExtensionsTest
     {
+        [Fact]
         public void GetAllBaseTypesWorks()
         {
             // Arrange
