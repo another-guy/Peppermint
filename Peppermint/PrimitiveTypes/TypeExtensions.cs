@@ -6,7 +6,6 @@ namespace System
 {
     public static class TypeExtensions
     {
-        // TODO Test this
         public static IEnumerable<Type> GetAllBaseTypes(this Type type)
         {
             var currentType = type;
@@ -14,11 +13,16 @@ namespace System
             {
                 currentType = currentType.GetTypeInfo().BaseType;
 
-                if (currentType == typeof(object))
+                if (currentType == null)
                     yield break;
 
                 yield return currentType;
             }
+        }
+
+        public static bool IsStrictlyChildClassOf(this Type childType, Type parentType)
+        {
+            return childType.GetAllBaseTypes().Any(baseType => baseType == parentType);
         }
     }
 }
