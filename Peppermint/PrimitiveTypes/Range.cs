@@ -1,4 +1,6 @@
-﻿namespace System
+﻿using System.Diagnostics.Contracts;
+
+namespace System
 {
     using Collections;
     using Collections.Generic;
@@ -29,11 +31,13 @@
         public int to;
         public int step;
 
+        [Pure]
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
+        [Pure]
         public IEnumerator<int> GetEnumerator()
         {
             for (var current = from;

@@ -1,4 +1,6 @@
-﻿namespace System.Collections.Generic
+﻿using System.Diagnostics.Contracts;
+
+namespace System.Collections.Generic
 {
     using System;
 
@@ -10,6 +12,7 @@
 
         public static Func<int, int, int> CeilNumbers = (@base, current) => @base + current;
 
+        [Pure]
         public static IEnumerable<T> WithoutDuplicates<T>(
             Func<int, int, T> sequenceItemGenerator,
             int? baseOverride = null,
