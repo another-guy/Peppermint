@@ -11,33 +11,45 @@ namespace System
             var currentType = type;
             while (true)
             {
-                currentType = currentType.GetTypeInfo().BaseType;
-
-                if (currentType == null)
+                if ((currentType = currentType.GetTypeInfo().BaseType) == null)
                     yield break;
-
                 yield return currentType;
             }
         }
-        
-        public static bool IsStrictlyChildOfClass(this Type childClassType, Type parentClassType)
+
+        public static bool IsParentTypeOf(this Type parentType, Type childType)
         {
-            return childClassType.GetAllBaseTypes().Any(baseType => baseType == parentClassType);
+            return childType.IsChildTypeOf(parentType);
         }
 
-        public static bool IsStrictlyParentClassOf(this Type parentClassType, Type childClassType)
+        public static bool IsChildTypeOf(this Type childType, Type parentType)
         {
-            return childClassType.IsStrictlyChildOfClass(parentClassType);
+            return parentType.IsAssignableFrom(childType);
         }
 
-        public static bool IsStrictlyChildOfInterface(this Type childType, Type parentInterfaceType)
+        public static bool IsPossiblyOpenGenericParentOf(this Type parentType, Type childType)
         {
-            return childType.GetInterfaces().Any(baseInterface => baseInterface == parentInterfaceType);
+            return childType.IsChildTypeOfPossiblyOpenGeneric(parentType);
         }
 
-        public static bool IsStrictlyParentInterfaceOf(this Type parentInterfaceType, Type childType)
+        public static bool IsChildTypeOfPossiblyOpenGeneric(this Type childType, Type parentClassType)
         {
-            return childType.IsStrictlyChildOfInterface(parentInterfaceType);
+            if (childType.IsChildTypeOf(parentClassType))
+                return true;
+
+            var parentTypeInfo = parentClassType.GetTypeInfo();
+            if (parentTypeInfo.IsGenericTypeDefinition)
+            {
+                var childArgs = childType.GetGenericArguments();
+                var constraints = parentTypeInfo
+                    .GetGenericArguments()
+                    .Select(genericArgument => genericArgument.GetTypeInfo().GetGenericParameterConstraints())
+                    .ToArray();
+
+                return childArgs.Length == constraints.Length;
+            }
+
+            return false;
         }
     }
 }
