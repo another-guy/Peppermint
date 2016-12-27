@@ -27,7 +27,7 @@ namespace System
             return parentType.IsAssignableFrom(childType);
         }
 
-        public static bool IsPossiblyOpenGenericParentOf(this Type parentType, Type childType)
+        public static bool IsParentOrPossiblyOpenGenericParentOf(this Type parentType, Type childType)
         {
             return childType.IsChildTypeOfPossiblyOpenGeneric(parentType);
         }
