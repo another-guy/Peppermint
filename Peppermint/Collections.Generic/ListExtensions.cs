@@ -1,4 +1,6 @@
-﻿namespace System.Collections.Generic
+﻿using System.Diagnostics.Contracts;
+
+namespace System.Collections.Generic
 {
     using System;
     using System.Linq;
@@ -23,6 +25,7 @@
             collection[index2] = temp;
         }
 
+        [Pure]
         public static string AsString<T>(this IList<T> collection)
         {
             var items = collection

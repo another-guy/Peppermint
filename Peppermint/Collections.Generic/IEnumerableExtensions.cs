@@ -1,15 +1,19 @@
-﻿namespace System.Collections.Generic
+﻿using System.Diagnostics.Contracts;
+
+namespace System.Collections.Generic
 {
     using System;
     using System.Linq;
 
     public static class IEnumerableExtensions
     {
+        [Pure]
         public static IEnumerable<T> NullToEmpty<T>(this IEnumerable<T> target)
         {
             return target ?? new T[0];
         }
 
+        [Pure]
         public static IEnumerable<TResult> TakeProject<T, TResult>(
             this IEnumerable<T> source,
             Predicate<T> takePredicate,
@@ -20,6 +24,7 @@
                     yield return projectFunction(item);
         }
 
+        [Pure]
         public static IEnumerable<TResult> SkipProject<T, TResult>(
             this IEnumerable<T> source,
             Predicate<T> skipPredicate,
@@ -29,6 +34,7 @@
             return source.TakeProject(takePredicate, projectFunction);
         }
 
+        [Pure]
         public static IEnumerable<TResult> TakeProjectMany<T, TResult>(
             this IEnumerable<T> source,
             Predicate<T> takePredicate,
@@ -40,6 +46,7 @@
                         yield return projectedResult;
         }
 
+        [Pure]
         public static IEnumerable<TResult> SkipProjectMany<T, TResult>(
             this IEnumerable<T> source,
             Predicate<T> skipPredicate,
@@ -48,7 +55,7 @@
             Predicate<T> takePredicate = element => skipPredicate(element) == false;
             return source.TakeProjectMany(takePredicate, projectFunction);
         }
-
+        
         public static void ForEach<T>(
             this IEnumerable<T> source,
             Action<T> action)
@@ -57,6 +64,7 @@
                 action(item);
         }
 
+        [Pure]
         public static bool None<T>(
             this IEnumerable<T> source,
             Predicate<T> predicate)
