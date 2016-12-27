@@ -116,6 +116,7 @@ namespace Peppermint.Tests.PrimitiveTypes
         [InlineData(typeof(IDictionary<,>), typeof(IDictionary<string, int>), false)]
 
         [InlineData(typeof(IDictionary<int,string>), typeof(IDictionary<string, int>), false)]
+        [InlineData(typeof(IDictionary<string, int>), typeof(IDictionary), false)]
 
         [InlineData(typeof(Tuple<>), typeof(Tuple<,>), false)]
         [InlineData(typeof(Tuple<,>), typeof(Tuple<,,>), false)]
