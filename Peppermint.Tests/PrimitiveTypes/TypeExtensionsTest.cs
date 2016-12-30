@@ -126,6 +126,9 @@ namespace Peppermint.Tests.PrimitiveTypes
         [InlineData(typeof(Tuple<string, int, object>), typeof(Tuple<,,>), true)]
         [InlineData(typeof(Tuple<,,>), typeof(Tuple<string, int, object>), false)]
         [InlineData(typeof(Tuple<object, object, object>), typeof(Tuple<string, int, object>), false)]
+
+        [InlineData(typeof(List<int>), typeof(Nullable<>), false)]
+        [InlineData(typeof(Nullable<>), typeof(List<int>), false)]
         public void IsChildTypeOfPossiblyOpenGeneric(Type childType, Type parentType, bool expectedResult)
         {
             // Arrange

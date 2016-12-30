@@ -43,16 +43,22 @@ namespace System
             if (childType.IsChildTypeOf(parentClassType))
                 return true;
 
+            var childTypeInfo = childType.GetTypeInfo();
+            if (childTypeInfo.IsGenericType == false)
+                return false;
+            
             var parentTypeInfo = parentClassType.GetTypeInfo();
             if (parentTypeInfo.IsGenericTypeDefinition)
             {
-                var childArgs = childType.GetGenericArguments();
-                var constraints = parentTypeInfo
-                    .GetGenericArguments()
-                    .Select(genericArgument => genericArgument.GetTypeInfo().GetGenericParameterConstraints())
-                    .ToArray();
+                var childTypesGenericArgs = childType.GenericTypeArguments;
+                if (childTypesGenericArgs.Length != parentTypeInfo.GenericTypeParameters.Length)
+                    return false;
 
-                return childArgs.Length == constraints.Length;
+                var parentGenericTypeClosedToChildArgument =
+                    parentClassType.MakeGenericType(childTypesGenericArgs);
+
+                if (childType.IsChildTypeOf(parentGenericTypeClosedToChildArgument))
+                    return true;
             }
 
             return false;
