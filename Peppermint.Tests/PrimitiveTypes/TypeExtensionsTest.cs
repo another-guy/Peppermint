@@ -129,6 +129,7 @@ namespace Peppermint.Tests.PrimitiveTypes
 
         [InlineData(typeof(List<int>), typeof(Nullable<>), false)]
         [InlineData(typeof(Nullable<>), typeof(List<int>), false)]
+        [InlineData(typeof(List<string>), typeof(Nullable<>), false)]
         public void IsChildTypeOfPossiblyOpenGeneric(Type childType, Type parentType, bool expectedResult)
         {
             // Arrange
