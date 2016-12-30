@@ -54,8 +54,19 @@ namespace System
                 if (childTypesGenericArgs.Length != parentTypeInfo.GenericTypeParameters.Length)
                     return false;
 
-                var parentGenericTypeClosedToChildArgument =
-                    parentClassType.MakeGenericType(childTypesGenericArgs);
+                Type parentGenericTypeClosedToChildArgument;
+                try
+                {
+                    parentGenericTypeClosedToChildArgument =
+                        parentClassType.MakeGenericType(childTypesGenericArgs);
+                }
+                catch (ArgumentException)
+                {
+                    // This happens when closing argument type violates the declared paramter's constraints.
+                    // It is not easy to check whether the constraint is met or violated, this is why this code relies on exception.
+                    // http://stackoverflow.com/a/4864565/482868
+                    return false;
+                }
 
                 if (childType.IsChildTypeOf(parentGenericTypeClosedToChildArgument))
                     return true;
