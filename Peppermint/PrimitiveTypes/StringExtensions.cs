@@ -79,5 +79,17 @@ namespace System
             var length = Math.Max(0, possibleNegativeLength);
             return target.Substring(0, length);
         }
+
+        [Pure]
+        public static bool IsNullOrEmpty(this string target)
+        {
+            return string.IsNullOrEmpty(target);
+        }
+
+        [Pure]
+        public static bool IsNullOrWhiteSpace(this string target)
+        {
+            return string.IsNullOrWhiteSpace(target);
+        }
     }
 }

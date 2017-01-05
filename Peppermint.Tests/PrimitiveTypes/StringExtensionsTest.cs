@@ -106,5 +106,29 @@
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("\t")]
+        [InlineData("word")]
+        public void IsNullOrEmptyWorks(string target)
+        {
+            // Assert
+            Assert.Equal(string.IsNullOrEmpty(target), target.IsNullOrEmpty());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("\t")]
+        [InlineData("word")]
+        public void IsNullOrWhiteSpaceWorks(string target)
+        {
+            // Assert
+            Assert.Equal(string.IsNullOrWhiteSpace(target), target.IsNullOrWhiteSpace());
+        }
     }
 }
