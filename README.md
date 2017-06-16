@@ -1,4 +1,4 @@
-﻿## Synopsis
+## Synopsis
 
 [![Peppermint](https://github.com/another-guy/Peppermint/raw/master/Peppermint.png)](https://github.com/another-guy/Peppermint)
 
